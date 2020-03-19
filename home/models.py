@@ -23,6 +23,20 @@ class CustomText(models.Model):
 
 class HomePage(models.Model):
     body = models.TextField()
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE,
+        related_name="home_page_owner",
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE,
+        related_name="home_page_user",
+    )
 
     @property
     def api(self):
